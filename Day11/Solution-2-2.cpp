@@ -80,14 +80,14 @@ size_t count_paths(unordered_map<string, vector<string>> map) {
         1
     );
     cout << "svr -> dac: " << svr_to_dac << endl;
-    size_t dac_to_fft = count_paths_helper(
+    size_t dac_to_fft = (svr_to_dac == 0) ? 0 : count_paths_helper(
         map,
         "dac",
         "fft",
         svr_to_dac
     );
     cout << "dac -> fft: " << dac_to_fft << endl;
-    size_t fft_to_out = count_paths_helper(
+    size_t fft_to_out = (dac_to_fft == 0) ? 0 : count_paths_helper(
         map,
         "fft",
         "out",
@@ -102,14 +102,14 @@ size_t count_paths(unordered_map<string, vector<string>> map) {
         1
     );
     cout << "svr -> fft: " << svr_to_fft << endl;
-    size_t fft_to_dac = count_paths_helper(
+    size_t fft_to_dac = (svr_to_fft == 0) ? 0 : count_paths_helper(
         map,
         "fft",
         "dac",
         svr_to_fft
     );
     cout << "fft -> dac: " << fft_to_dac << endl;
-    size_t dac_to_out = count_paths_helper(
+    size_t dac_to_out = (fft_to_dac == 0) ? 0 : count_paths_helper(
         map,
         "dac",
         "out",
