@@ -58,10 +58,6 @@ size_t count_paths_recursive(
     if (memo[curr][state] != -1) {
         return memo[curr][state];
     }
-    if (curr == "out") {
-        memo[curr][state] = (state == 0b11) ? 1 : 0; 
-        return memo[curr][state];
-    }
 
     size_t sum = 0;
     for(auto key : map[curr]) {
@@ -73,7 +69,7 @@ size_t count_paths_recursive(
 
 size_t count_paths(unordered_map<string, vector<string>> map) {
     unordered_map<string, vector<size_t>> memo;
-    memo["out"] = vector<size_t>(4, -1);
+    memo["out"] = {0, 0, 0, 1};
 
     for(auto key : map) {
         memo[key.first] = vector<size_t>(4, -1);
